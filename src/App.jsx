@@ -31,7 +31,7 @@ function handleClick(){
       </div>
       <div>
         <ul>
-          {items.map((todoItem)=> <li className=''>{todoItem} <i class="fa fa-square-check"></i> <i class="fa-solid fa-trash"></i></li>)
+          {items.map((todoItem)=> <li className='list'>{todoItem} <i class="fa fa-square-check"></i> <i class="fa-solid fa-trash"></i></li>)
           }
         </ul>
       </div>
