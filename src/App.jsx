@@ -4,10 +4,18 @@ import React from 'react';
 function App() {
 
 const [inputText , setInputText] = React.useState("");
+const [items,setItems] = React.useState([]);
 
 function handleChange(e){
   const newValue = e.target.value
 setInputText(newValue)
+}
+
+function handleClick(){
+  setItems((prevValue)=>{
+    return [...prevValue,inputText]
+  });
+  setInputText("");
 }
 
   return (
@@ -17,13 +25,14 @@ setInputText(newValue)
       </div>
       <div className="form">
         <input type="text" value={inputText} onChange={handleChange}/>
-        <button>
+        <button onClick={handleClick}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          <li>A Item</li>
+          {items.map((todoItem)=> <li className=''>{todoItem} <i class="fa fa-square-check"></i> <i class="fa-solid fa-trash"></i></li>)
+          }
         </ul>
       </div>
     </div>
