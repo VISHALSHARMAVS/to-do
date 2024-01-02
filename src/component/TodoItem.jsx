@@ -10,10 +10,8 @@ function TodoItem(props) {
   }
 
   return (
-    <div onClick={handleCheck} onDoubleClick={()=>{
-      props.delete(props.id);
-    }}>
-      <li
+    <div >
+      <li onClick={handleCheck} 
         className="list"
         style={{ textDecoration: checkBtn ? "none" : "line-through" }}
       >
