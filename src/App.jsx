@@ -1,38 +1,43 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
+import TodoItem from "./TodoItem";
 
 function App() {
+  const [inputText, setInputText] = React.useState("");
+  const [items, setItems] = React.useState([]);
+  function handleChange(e) {
+    const newValue = e.target.value;
+    setInputText(newValue);
+  }
 
-const [inputText , setInputText] = React.useState("");
-const [items,setItems] = React.useState([]);
+  function handleClick() {
+    setItems((prevValue) => {
+      return [...prevValue, inputText];
+    });
 
-function handleChange(e){
-  const newValue = e.target.value
-setInputText(newValue)
-}
 
-function handleClick(){
-  setItems((prevValue)=>{
-    return [...prevValue,inputText]
-  });
-  setInputText("");
-}
+    setInputText("");
+  }
+ 
 
   return (
     <div className="container">
-     <div className="heading">
+      <div className="heading">
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input type="text" value={inputText} onChange={handleChange}/>
+        <input type="text" value={inputText} onChange={handleChange} />
         <button onClick={handleClick}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          {items.map((todoItem)=> <li className='list'>{todoItem} <i class="fa fa-square-check"></i> <i class="fa-solid fa-trash"></i></li>)
-          }
+          {items.map((todoItem) => 
+           <TodoItem 
+           text = {todoItem}
+           />
+          )}
         </ul>
       </div>
     </div>
@@ -40,3 +45,4 @@ function handleClick(){
 }
 
 export default App;
+
