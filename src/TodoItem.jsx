@@ -10,7 +10,9 @@ function TodoItem(props) {
   }
 
   return (
-    <div onClick={handleCheck}>
+    <div onClick={handleCheck} onDoubleClick={()=>{
+      props.delete(props.id);
+    }}>
       <li
         className="list"
         style={{ textDecoration: checkBtn ? "none" : "line-through" }}
@@ -20,7 +22,9 @@ function TodoItem(props) {
           className="fa fa-square-check"
           style={{ color: checkBtn ? "green" : "darkgray" }}
         ></i>{" "}
-        <i className="fa-solid fa-trash"></i>
+        <i className="fa-solid fa-trash" onClick={()=>{
+          props.delete(props.id)
+        }}></i>
       </li>
     </div>
   );
